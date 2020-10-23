@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 #Repeat i 20 times with a twist
-i="1"
+i="0"
 while [ $i -lt 13 ]
 do
 echo "Hour: $i"
-j="0"
+j="1"
 while [ $j -lt 60 ]
 do
 echo "$j"
