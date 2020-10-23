@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-#read and cunt in passwd
+#read and count in passwd
 while read line
 do
-    echo "$line" | cut -d ":" -f 1,3,6
+echo "$line" | cut -d ":" -f 1,3,6
 done < /etc/passwd
