@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#Repeat i 20 times with a twist
+#display time
 i="0"
 while [ $i -lt 13 ]
 do
