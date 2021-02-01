@@ -1,35 +1,34 @@
 #!/usr/bin/python3
 """ Task 1 """
+
 import csv
 import requests
 from sys import argv
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
+    data = requests.get('https://jsonplaceholder.typicode.com/users/' +
+                        argv[1])
 
-    completed_tasks = 0
-    total_tasks = 0
-    title = []
-    id = requests.get('https://jsonplaceholder.typicode.com/users/{}'.format(argv[1]))
+    name = data.json().get('name')
+    username = data.json().get('username')
 
-    req = requests.get('https://jsonplaceholder.typicode.com/todos/')
+    data = requests.get('https://jsonplaceholder.typicode.com/users/' +
+                        argv[1] + '/todos')
+    done = 0
+    done_task = []
+    for task in data.json():
+        if task['completed']:
+            done_task.append(task['title'])
+            done += 1
+    total = len(data.json())
+    print("Employee {} is done with tasks({}/{}):".format(name, done, total))
 
-    name = (id.json().get('name'))
-    r_json = req.json()
-
-    for i in r_json:
-        if i.get('userId') == int(argv[1]):
-            if i.get('completed') is True:
-                title.append(i.get('title'))
-                completed_tasks += 1
-            total_tasks += 1
-    print("Employee {} is done with tasks({}/{}):"
-          .format(name, completed_tasks, total_tasks))
-    for i in title:
-        print("\t {}".format(i))
+    for task in done_task:
+        print("\t {}".format(task))
 
     with open("{}.csv".format(argv[1]), "w") as file:
         writer = csv.writer(file, quoting=csv.QUOTE_ALL)
-        for task in req.json():
-            writer.writerow([argv[1], name,
+        for task in data.json():
+            writer.writerow([argv[1], username,
                             task.get("completed"), task.get("title")])
