@@ -27,3 +27,9 @@ if __name__ == '__main__':
           .format(name, completed_tasks, total_tasks))
     for i in title:
         print("\t {}".format(i))
+
+    with open("{}.csv".format(argv[1]), "w") as file:
+        writer = csv.writer(file, quoting=csv.QUOTE_ALL)
+        for task in req.json():
+            writer.writerow([argv[1], name,
+                            task.get("completed"), task.get("title")])
