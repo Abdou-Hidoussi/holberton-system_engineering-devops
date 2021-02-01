@@ -21,4 +21,4 @@ if __name__ == "__main__":
     total = len(data.json())
     print("Employee {} is done with tasks({}/{}):".format(name, done, total))
     for task in done_task:
-        print("     {}".format(task))
+        print("\t {}".format(task))
