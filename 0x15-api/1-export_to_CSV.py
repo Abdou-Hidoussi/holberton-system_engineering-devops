@@ -1,14 +1,15 @@
 #!/usr/bin/python3
 """ Task 1 """
 
+import csv
 import requests
 from sys import argv
-import csv
 
 
 if __name__ == "__main__":
     data = requests.get('https://jsonplaceholder.typicode.com/users/' +
                         argv[1])
+
     name = data.json().get('name')
     username = data.json().get('username')
 
@@ -22,6 +23,7 @@ if __name__ == "__main__":
             done += 1
     total = len(data.json())
     print("Employee {} is done with tasks({}/{}):".format(name, done, total))
+
     for task in done_task:
         print("\t {}".format(task))
 
