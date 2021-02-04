@@ -12,7 +12,7 @@ def top_ten(subreddit):
         nb = 0
         for posts in request.json().get("data").get("children"):
             if nb < 10:
-                print("#"+posts.get("data").get("title")+"#")
+                print(posts.get("data").get("title"))
                 nb += 1
             else:
                 break
