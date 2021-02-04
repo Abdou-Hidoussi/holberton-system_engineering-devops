@@ -15,7 +15,7 @@ def recurse(subreddit, hot_list=[], after=None):
                                .format(subreddit, after), headers=user)
     if not request.ok:
         return None
-        
+
     children = request.json().get('data').get('children')
     after = request.json().get('data').get('after')
 
