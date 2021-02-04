@@ -6,7 +6,7 @@ import requests
 
 def top_ten(subreddit):
     user = {"User-Agent": "Abdou-Hidoussi"}
-    request = requests.get("https://www.reddit.com/r/{}/hot/.json?limit=10"
+    request = requests.get("https://www.reddit.com/r/{}/hot/.json"
                            .format(subreddit), headers=user)
     if request.status_code == 200:
         nb = 0
