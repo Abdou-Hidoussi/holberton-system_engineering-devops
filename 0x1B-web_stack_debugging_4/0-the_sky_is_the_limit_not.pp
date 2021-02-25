@@ -1,8 +1,5 @@
 # Task 0
-exec { 'fix--for-nginx':
-  command => 'sed -i "s/15/4096/" /etc/default/nginx',
-  path    => '/usr/local/bin/:/bin/'
-}         ->
-exec { 'nginx-restart':
-  command => 'nginx restart',
+exec { 'there is no limit':
+command => 'sed -i "s/15/4069/g" /etc/default/nginx | service nginx restart',
+path    => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
 }
