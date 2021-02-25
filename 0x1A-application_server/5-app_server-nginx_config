@@ -24,9 +24,9 @@ server {
   }
   index index.html;
 
-  server_name aymenhaddaji.tech;
+  server_name 35.231.99.203;
   rewrite '^/redirect_me$' http://example.com permanent;
   error_page 404 /custom_404.html;
-  add_header X-Served-By gc-1931-web-01-1607296088;
+  add_header X-Served-By gc-1939-web-01-1607440548;
 }
 
